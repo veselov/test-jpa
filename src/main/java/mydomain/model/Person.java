@@ -10,6 +10,9 @@ public class Person
 
     String name;
 
+    // JPA Spec requires all entities to have a public no-arg constructor.
+    public Person() {}
+
     public Person(long id, String name)
     {
         this.id = id;

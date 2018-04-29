@@ -1,6 +1,9 @@
 package org.datanucleus.test;
 
 import java.util.*;
+
+import mydomain.SimpleCF;
+import org.datanucleus.api.jpa.JPAPropertyNames;
 import org.junit.*;
 import javax.persistence.*;
 
@@ -14,7 +17,9 @@ public class SimpleTest
     public void testSimple()
     {
         NucleusLogger.GENERAL.info(">> test START");
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyTest");
+        Map props = new HashMap();
+        props.put("datanucleus.ConnectionFactory", new SimpleCF());
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyTest", props);
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
